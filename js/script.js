@@ -111,15 +111,17 @@ async function main() {
     })
 
     // Add an event listener to hamburger
-    document.querySelector(".hamburger").addEventListener("click", ()=>{
+    document.querySelector(".hamburger").addEventListener("click", () => {
         document.querySelector(".left").style.left = "0"
     })
 
     // Add an event listener to close button
-    document.querySelector(".close").addEventListener("click", ()=>{
+    document.querySelector(".close").addEventListener("click", () => {
         document.querySelector(".left").style.left = "-130%"
     })
-    
+
+    // Add an event listener to previous and next button
+
 };
 main()
 

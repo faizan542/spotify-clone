@@ -16,7 +16,6 @@ function convertSecondsToMinuteSecond(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-
 async function getSongs(folder) {
     currFolder = folder
     let a = await fetch(`/${folder}/`);
@@ -25,7 +24,6 @@ async function getSongs(folder) {
     div.innerHTML = response;
     let as = div.getElementsByTagName('a')
     songs = []
-
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith('.mp3')) {
@@ -84,7 +82,7 @@ async function displayAlbums() {
     for (let index = 0; index < array.length; index++) {
         const e = array[index];
 
-        if (e.href.includes("/songs")) {
+        if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
             let folder = (e.href.split("/").slice(-2)[0]);
 
             // Get the meta data of the folder
@@ -182,7 +180,7 @@ async function main() {
     // Add an event listener to volume
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         currentSong.volume = parseInt(e.target.value) / 100
-        if(currentSong.volume > 0){
+        if (currentSong.volume > 0) {
             document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
         }
     })
